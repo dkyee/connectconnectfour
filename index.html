@@ -77,7 +77,6 @@
           var bluePts = 0;
 
           for(validateStreak = 0; validateStreak <= tileRange; validateStreak++){
-            console.log("Tile row:"+redPts)
             switch(tilesAvailable[row][validateStreak]) {
               case 1:
                 redPts++;
@@ -101,7 +100,6 @@
           // vertical
           
           for(validateStreak = 0; validateStreak <= tileRange; validateStreak++){
-            console.log("Tile row:"+redPts)
             switch(tilesAvailable[validateStreak][column]) {
               case 1:
                 redPts++;
@@ -125,7 +123,6 @@
           // north east
 
           for(validateStreak = 0; validateStreak <= tileRange; validateStreak++){
-            console.log("Tile row:"+redPts)
             switch(tilesAvailable[validateStreak][validateStreak]) {
               case 1:
                 redPts++;
