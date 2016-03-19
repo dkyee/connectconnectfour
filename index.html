@@ -72,11 +72,12 @@
       }
 
       function validateLine(row, column){
-          // vertical
+          // horizontal
           var redPts = 0;
           var bluePts = 0;
+
           for(validateStreak = 0; validateStreak <= tileRange; validateStreak++){
-            console.log("Tile row:"+row)
+            console.log("Tile row:"+redPts)
             switch(tilesAvailable[row][validateStreak]) {
               case 1:
                 redPts++;
@@ -88,19 +89,63 @@
                 bluePts = 0;
                 redPts = 0;
             } 
-            if(redPts == 4){
+            if(redPts === 4){
               alert("Red wins");
               break;
             }
-            if(bluePts == 4){
+            if(bluePts === 4){
               alert("Blue wins");
               break;
             }
           }
-          // horizontal
-
+          // vertical
+          
+          for(validateStreak = 0; validateStreak <= tileRange; validateStreak++){
+            console.log("Tile row:"+redPts)
+            switch(tilesAvailable[validateStreak][column]) {
+              case 1:
+                redPts++;
+                break;
+              case 2:
+                bluePts++;
+                break;
+              default:
+                bluePts = 0;
+                redPts = 0;
+            } 
+            if(redPts === 4){
+              alert("Red wins");
+              break;
+            }
+            if(bluePts === 4){
+              alert("Blue wins");
+              break;
+            }
+          }
           // north east
 
+          for(validateStreak = 0; validateStreak <= tileRange; validateStreak++){
+            console.log("Tile row:"+redPts)
+            switch(tilesAvailable[validateStreak][validateStreak]) {
+              case 1:
+                redPts++;
+                break;
+              case 2:
+                bluePts++;
+                break;
+              default:
+                bluePts = 0;
+                redPts = 0;
+            } 
+            if(redPts === 4){
+              alert("Red wins");
+              break;
+            }
+            if(bluePts === 4){
+              alert("Blue wins");
+              break;
+            }
+          }
           // north west
 
         }
