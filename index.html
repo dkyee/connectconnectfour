@@ -1,0 +1,169 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!--
+    Modified from the Debian original for Ubuntu
+    Last updated: 2014-03-19
+    See: https://launchpad.net/bugs/1288690
+  -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Connect Connect 4</title>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <style type="text/css">
+        td{
+          width: 50px;
+          height: 50px;
+          border: 1px solid black;
+        }
+        .red{
+          background: red;
+        }
+        .blue{
+          background: blue;
+        }
+    </style>
+    <script>
+      var player = 1;
+      var tilesAvailable = [
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0]
+      ];
+
+      var tileRange = 4;
+
+      function addTile(column){
+        //alert(column);
+        for(vRow = 0; vRow <= 5; vRow++){
+          if(tilesAvailable[vRow][column] == 0){
+            tilesAvailable[vRow][column] = player;
+            break;
+          }  
+        }
+          drawTiles();
+          if(player == 1){
+            player = 2;
+          } else {
+            player = 1;
+          }
+      }
+      function drawTiles(){
+        for(vColumn = 0; vColumn  <= 6; vColumn++){
+          for(vRow = 0; vRow <= 5; vRow++){
+            switch(tilesAvailable[vRow][vColumn]) {
+              case 1:
+                addedColor = "red";
+                  break;
+              case 2:
+                addedColor = "blue";
+                  break;
+              default:
+                addedColor = "";
+            } 
+            $("tr#row-"+vRow+" td.column-"+vColumn).addClass(addedColor);
+            validateLine(vRow, vColumn);
+          }
+        }
+      }
+
+      function validateLine(row, column){
+          // vertical
+          var redPts = 0;
+          var bluePts = 0;
+          for(validateStreak = 0; validateStreak <= tileRange; validateStreak++){
+            console.log("Tile row:"+row)
+            switch(tilesAvailable[row][validateStreak]) {
+              case 1:
+                redPts++;
+                break;
+              case 2:
+                bluePts++;
+                break;
+              default:
+                bluePts = 0;
+                redPts = 0;
+            } 
+            if(redPts == 4){
+              alert("Red wins");
+              break;
+            }
+            if(bluePts == 4){
+              alert("Blue wins");
+              break;
+            }
+          }
+          // horizontal
+
+          // north east
+
+          // north west
+
+        }
+      
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr id="row-5">
+        <td class="column-0" onclick="addTile(0)"></td>
+        <td class="column-1" onclick="addTile(1)"></td>
+        <td class="column-2" onclick="addTile(2)"></td>
+        <td class="column-3" onclick="addTile(3)"></td>
+        <td class="column-4" onclick="addTile(4)"></td>
+        <td class="column-5" onclick="addTile(5)"></td>
+        <td class="column-6" onclick="addTile(6)"></td>
+      </tr>
+      <tr id="row-4">
+        <td class="column-0" onclick="addTile(0)"></td>
+        <td class="column-1" onclick="addTile(1)"></td>
+        <td class="column-2" onclick="addTile(2)"></td>
+        <td class="column-3" onclick="addTile(3)"></td>
+        <td class="column-4" onclick="addTile(4)"></td>
+        <td class="column-5" onclick="addTile(5)"></td>
+        <td class="column-6" onclick="addTile(6)"></td>
+      </tr>
+      <tr id="row-3">
+        <td class="column-0" onclick="addTile(0)"></td>
+        <td class="column-1" onclick="addTile(1)"></td>
+        <td class="column-2" onclick="addTile(2)"></td>
+        <td class="column-3" onclick="addTile(3)"></td>
+        <td class="column-4" onclick="addTile(4)"></td>
+        <td class="column-5" onclick="addTile(5)"></td>
+        <td class="column-6" onclick="addTile(6)"></td>
+      </tr>
+      <tr id="row-2">
+        <td class="column-0" onclick="addTile(0)"></td>
+        <td class="column-1" onclick="addTile(1)"></td>
+        <td class="column-2" onclick="addTile(2)"></td>
+        <td class="column-3" onclick="addTile(3)"></td>
+        <td class="column-4" onclick="addTile(4)"></td>
+        <td class="column-5" onclick="addTile(5)"></td>
+        <td class="column-6" onclick="addTile(6)"></td>
+      </tr>
+      <tr id="row-1">
+        <td class="column-0" onclick="addTile(0)"></td>
+        <td class="column-1" onclick="addTile(1)"></td>
+        <td class="column-2" onclick="addTile(2)"></td>
+        <td class="column-3" onclick="addTile(3)"></td>
+        <td class="column-4" onclick="addTile(4)"></td>
+        <td class="column-5" onclick="addTile(5)"></td>
+        <td class="column-6" onclick="addTile(6)"></td>
+      </tr>
+      <tr id="row-0">
+        <td class="column-0" onclick="addTile(0)"></td>
+        <td class="column-1" onclick="addTile(1)"></td>
+        <td class="column-2" onclick="addTile(2)"></td>
+        <td class="column-3" onclick="addTile(3)"></td>
+        <td class="column-4" onclick="addTile(4)"></td>
+        <td class="column-5" onclick="addTile(5)"></td>
+        <td class="column-6" onclick="addTile(6)"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+
